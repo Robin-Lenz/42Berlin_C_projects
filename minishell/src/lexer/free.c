@@ -59,7 +59,6 @@ void	free_tree(t_node *cmd)
 		rcmd = (t_redir *) cmd;
 		free_redir(rcmd);
 	}
-	clear_history();
 }
 
 void	free_node(t_env *curr)
