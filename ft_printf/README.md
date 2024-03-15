@@ -21,11 +21,6 @@ Using the libtool command is forbidden.
 
 
 # usage
-clone the repository
-
-```
-git clone git@github.com:Robin-Lenz/ft_printf.git ft_printf
-```
 
 enter the directory
 ```
