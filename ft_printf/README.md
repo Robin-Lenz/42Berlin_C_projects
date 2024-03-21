@@ -22,7 +22,7 @@ Using the libtool command is forbidden.
 
 # usage
 
-enter the directory
+enter the directory and make
 ```
 cd ft_printf
 make
