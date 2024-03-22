@@ -50,4 +50,4 @@ Program Usage:
 
 Additional Information:
 
-    The second part of the curriculum, which focuses on C++, can be found in a separate repository named "42Berlin_projects_2".
+The second part of the curriculum, which focuses on C++, can be found in a separate repository named "42Berlin_projects_2".

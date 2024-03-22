@@ -6,14 +6,14 @@
 /*   By: rpodack <rpodack@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 19:05:29 by rpodack           #+#    #+#             */
-/*   Updated: 2024/02/10 19:14:44 by rpodack          ###   ########.fr       */
+/*   Updated: 2024/03/14 17:36:57 by rpodack          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../inc/cub3d.h"
 
 void	get_raydir(t_map *env, int x)
 {
-	//x-coordinate in camera space
 	env->camerax = 2 * x / (double)SCREENWIDTH - 1;
 	env->camerax = -env->camerax;
 	env->raydirx = env->pdir[0] + env->planex * env->camerax;
@@ -34,7 +34,6 @@ void	collect_data_for_dda(t_map *env)
 
 void	steps(t_map *env)
 {
-	//calculate step and initial sideDist
 	if (env->raydirx < 0)
 	{
 		env->stepx = -1;
@@ -59,11 +58,9 @@ void	steps(t_map *env)
 
 void	calc_draw_startend(t_map *env)
 {
-	//Calculate height of line to draw on screen
 	env->drawstart = 0;
 	env->drawend = 0;
 	env->lineheight = SCREENHEIGHT / env->perpwalldist;
-	//calculate lowest and highest pixel to fill in current stripe
 	env->drawstart = -env->lineheight / 2 + SCREENHEIGHT / 2 + 100;
 	if (env->drawstart < 0)
 		env->drawstart = 0;
@@ -74,8 +71,6 @@ void	calc_draw_startend(t_map *env)
 
 void	calc_perpwalldist(t_map *env)
 {
-	//Calculate distance projected on camera direction 
-	//(Euclidean distance would give fisheye effect!)
 	if (env->side == 0)
 		env->perpwalldist = (env->sidedistx - env->deltadistx);
 	else

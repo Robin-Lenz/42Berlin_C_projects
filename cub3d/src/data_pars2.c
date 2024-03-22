@@ -6,7 +6,7 @@
 /*   By: rpodack <rpodack@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 19:06:09 by rpodack           #+#    #+#             */
-/*   Updated: 2024/02/10 19:06:10 by rpodack          ###   ########.fr       */
+/*   Updated: 2024/03/14 18:07:12 by rpodack          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,14 @@ int	go_to_next_number(char **str, int i, t_map *args)
 	s = *str;
 	while (s && ft_isdigit(*s))
 		s++;
-	if (*s == ',')
+	while (s && ft_strchr(WHITESPACE, *s))
 		s++;
+	if (*s == ',')
+	{
+		s++;
+		while (s && ft_strchr(WHITESPACE, *s))
+			s++;
+	}
 	else if (s && i > 1)
 		error_get_data("wrong rgba format\n", args, false);
 	*str = s;

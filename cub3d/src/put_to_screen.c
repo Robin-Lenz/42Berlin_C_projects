@@ -6,7 +6,7 @@
 /*   By: rpodack <rpodack@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 19:06:44 by rpodack           #+#    #+#             */
-/*   Updated: 2024/02/10 19:06:45 by rpodack          ###   ########.fr       */
+/*   Updated: 2024/03/14 17:41:02 by rpodack          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,15 @@ void	put_image(t_map *env, int x)
 {
 	int		texnum;
 	int		texx;
-	double	wallx; //where exactly the wall was hit
-	//texturing calculations
+	double	wallx;
+
 	texnum = env->map[env->mapx][env->mapy] - 1;
-	(void)texnum;
-	//calculate value of wallX
 	if (env->side == 0)
 		wallx = env->ppos[1] + env->perpwalldist * env->raydiry;
 	else
 		wallx = env->ppos[0] + env->perpwalldist * env->raydirx;
 	wallx -= floor((wallx));
-	//x coordinate on the texture
-	texx = (int)(wallx * env->tex[env->wall_direction]->width);// tex width
+	texx = (int)(wallx * env->tex[env->wall_direction]->width);
 	if (env->side == 0 && env->raydirx > 0)
 		texx = env->tex[env->wall_direction]->width - texx - 1;
 	if (env->side == 1 && env->raydiry < 0)

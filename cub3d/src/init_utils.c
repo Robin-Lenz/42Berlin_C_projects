@@ -6,7 +6,7 @@
 /*   By: rpodack <rpodack@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 14:30:59 by rpodack           #+#    #+#             */
-/*   Updated: 2024/02/26 14:31:00 by rpodack          ###   ########.fr       */
+/*   Updated: 2024/03/14 18:38:01 by rpodack          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_doubles(t_map *env)
 	env->time = 0.0;
 	env->oldtime = 0.0;
 	env->camerax = 0.0;
-	env->speed = 2.0 / 100;
+	env->speed = 5.0 / 100;
 	env->rotate = 2.0 / 100;
 }
 

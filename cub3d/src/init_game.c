@@ -6,7 +6,7 @@
 /*   By: rpodack <rpodack@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 19:05:56 by rpodack           #+#    #+#             */
-/*   Updated: 2024/02/10 19:05:57 by rpodack          ###   ########.fr       */
+/*   Updated: 2024/03/14 17:39:23 by rpodack          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@ void	game_loop(void *en)
 	{
 		env->mapx = env->ppos[0];
 		env->mapy = env->ppos[1];
-		//which box of the map we're in
-		/*raycasting*/
-		//calculate ray position and direction
 		get_raydir(env, x);
 		collect_data_for_dda(env);
 		steps(env);
@@ -71,7 +68,6 @@ void	dda_exec(t_map *env)
 
 void	next_square(t_map *env, int *hit, int *side)
 {
-	//jump to next map square, either in x-direction, or in y-direction
 	if (env->sidedistx < env->sidedisty)
 	{
 		env->sidedistx += env->deltadistx;
@@ -94,7 +90,6 @@ void	next_square(t_map *env, int *hit, int *side)
 void	init_game(t_map *env)
 {
 	init_images(env);
-	/*init window*/
 	mlx_set_setting(MLX_STRETCH_IMAGE, false);
 	env->mlx = mlx_init(SCREENWIDTH, SCREENHEIGHT, "cub3D", false);
 	if (!env->mlx)

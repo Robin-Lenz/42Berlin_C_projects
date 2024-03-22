@@ -1,19 +1,35 @@
-NAME := cub3d
-CC := cc
-CFLAGS := -Wextra -Wall -Werror -g #-fsanitize=leak
-LIBFT := src/libft/libft.a
-HEADER := -I ./header
-SRC_DIR := ./src
-OBJ_DIR := ./obj
+NAME	:= cub3D
+CC 		:= cc
+CFLAGS	:= -Wextra -Wall -Werror
 LIBMLX	:= ./MLX42/build
+
+HEADERS	:= -I ./include -I $(LIBMLX)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+LIBFT	:= ./src/libft/libft.a
 
-# Recursive wildcard function to find all .c files in subdirectories
-rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
-
-SRCS := $(call rwildcard,$(SRC_DIR)/,*.c)
-OBJS := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
-OBJ_DIRS := $(sort $(dir $(OBJS)))
+SRCS	:= ./src/calculation.c\
+	./src/data_texture.c\
+	./src/error.c\
+	./src/init_utils.c\
+    ./src/put_to_screen.c\
+	./src/data_pars2.c\
+	./src/data_utils_error.c\
+	./src/free.c\
+	./src/init.c\
+	./src/keys.c\
+	./src/load_imiges.c\
+	./src/move.c\
+	./src/utils.c\
+	./src/data_pars.c\
+	./src/enclosed.c\
+	./src/init_game.c\
+	./src/left_right.c\
+	./src/main.c\
+	./src/put_background.c\
+	./src/get_next_line/get_next_line.c\
+	./src/get_next_line/get_next_line_utils.c\
+	./src/get_next_line/helper.c
+OBJS	:= ${SRCS:.c=.o}
 
 all: libmlx $(NAME)
 
@@ -22,33 +38,25 @@ libmlx:
         git clone https://github.com/codam-coding-college/MLX42.git; \
         cd ./MLX42 && cmake -B build && cmake --build build -j4; \
 	fi
-#	make -C libft
-#	make -C ft_printf
+	make -C src/libft
 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIRS)
-	$(CC) $(CFLAGS) $< -c -o $@ $(HEADER)
+%.o: %.c
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
 
 $(NAME): $(OBJS)
-	make -C src/libft
-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -I include $(LIBFT) -g -o $(NAME) -lreadline $(HEADER)
-
-$(OBJ_DIRS):
-	mkdir -p $@
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(HEADERS) -I include $(LIBFT) -o $(NAME)
 
 clean:
 	make clean -C src/libft
-	rm -rf $(OBJ_DIR)
+	@rm -f $(OBJS)
 	@rm -f $(LIBMLX)/build/libmlx42.a
 	@rm -rf MLX42
-	
 
 fclean: clean
 	make fclean -C src/libft
-	rm -f $(NAME)
-
-
+	@rm -f $(NAME)
 
 re: clean all
 
-.PHONY: all clean fclean re
+.PHONY: all, clean, fclean, re, libmlx

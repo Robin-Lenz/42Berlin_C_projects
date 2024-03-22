@@ -6,7 +6,7 @@
 /*   By: rpodack <rpodack@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 19:06:16 by rpodack           #+#    #+#             */
-/*   Updated: 2024/02/10 19:06:17 by rpodack          ###   ########.fr       */
+/*   Updated: 2024/03/14 17:41:49 by rpodack          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,10 @@ void	assign_path(char *path, t_map *args, t_direction direction)
 			error_path(path, args);
 		args->ea = path;
 	}
+}
+
+void	enclosed_error(t_map *env, char **map)
+{
+	free_2d(map);
+	err_msg(env, 3);
 }

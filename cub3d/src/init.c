@@ -6,7 +6,7 @@
 /*   By: rpodack <rpodack@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 19:06:27 by rpodack           #+#    #+#             */
-/*   Updated: 2024/02/26 15:12:33 by rpodack          ###   ########.fr       */
+/*   Updated: 2024/03/14 15:45:21 by rpodack          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	find_start(char *line)
 			j = i;
 			while (line[j] != '\n')
 			{
-				if (line[j] != ' ' && line[j] != '1')
+				if (line[j] != ' ' && line[j] != '1' && line[j] != '0')
 					break ;
 				j++;
 			}
@@ -75,6 +75,7 @@ t_map	*init_map(char **av)
 	env = ft_calloc(sizeof(t_map), 1);
 	if (!env)
 		return (NULL);
+	file_type(env, av[1]);
 	get_map_line(env, av);
 	env->map = ft_split(&env->map_line[find_start(env->map_line)], '\n');
 	allowed_characters(env);
@@ -82,7 +83,7 @@ t_map	*init_map(char **av)
 		err_msg(env, 2);
 	check_dimensions(env);
 	env->map_copy = ft_split(&env->map_line[find_start(env->map_line)], '\n');
-	enclosed(env, env->ppos[0], env->ppos[1]);
+	is_enclosed(env);
 	init_doubles(env);
 	init_keypressed(env);
 	init_pathptr(env);

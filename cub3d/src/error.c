@@ -6,7 +6,7 @@
 /*   By: rpodack <rpodack@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 19:06:20 by rpodack           #+#    #+#             */
-/*   Updated: 2024/02/26 15:12:00 by rpodack          ###   ########.fr       */
+/*   Updated: 2024/03/14 17:43:19 by rpodack          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	err_msg(t_map *env, int flag)
 {
-	// err msg dependent on flag
 	if (flag == 1)
 		printf("invalid character in map\n");
 	else if (flag == 2)
@@ -28,25 +27,14 @@ void	err_msg(t_map *env, int flag)
 		free(env);
 		exit(1);
 	}
+	else if (flag == 4)
+	{
+		printf("not a valid filename\n");
+		free(env);
+		exit(1);
+	}
 	free_all(env);
 	exit(1);
-}
-
-void	enclosed(t_map *env, int x, int y)
-{
-	if (env->map_copy[x][y] == '1')
-		return ;
-	if (x >= (env->height_map - 1) || y >= \
-	(ft_strlen_int(env->map_copy[x]) - 1) || env->map_copy[x][y] == ' ')
-		err_msg(env, 3);
-	if (env->map_copy[x][y] == '0' || env->map_copy[x][y] == 'N' \
-	|| env->map_copy[x][y] == 'S' || env->map_copy[x][y] == 'O' || \
-	env->map_copy[x][y] == 'W')
-		env->map_copy[x][y] = '1';
-	enclosed(env, x + 1, y);
-	enclosed(env, x - 1, y);
-	enclosed(env, x, y + 1);
-	enclosed(env, x, y - 1);
 }
 
 void	allowed_characters(t_map *env)

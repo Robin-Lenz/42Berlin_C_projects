@@ -6,7 +6,7 @@
 /*   By: rpodack <rpodack@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 19:06:06 by rpodack           #+#    #+#             */
-/*   Updated: 2024/02/10 19:06:07 by rpodack          ###   ########.fr       */
+/*   Updated: 2024/03/14 17:37:47 by rpodack          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,16 @@ int	get_data(char *line, t_map *args)
 	{
 		find_arg(&line);
 		extract_data(&line, args);
+	}
+	find_arg(&line);
+	if (*line != '1' && *line != '0')
+		error_get_data("Invalid char between Map and map info\n", args, false);
+	while (*line)
+	{
+		if ((*line == '\n' && *(line +1) == '\n') || \
+		(*line == '\n' && *(line +1) == '\0'))
+			error_get_data("detected multiple newlines in map\n", args, false);
+		line++;
 	}
 	return (0);
 }

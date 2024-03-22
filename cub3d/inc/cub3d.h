@@ -6,7 +6,7 @@
 /*   By: rpodack <rpodack@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 19:07:35 by rpodack           #+#    #+#             */
-/*   Updated: 2024/02/26 15:27:26 by rpodack          ###   ########.fr       */
+/*   Updated: 2024/03/14 18:34:30 by rpodack          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 
 # define TILE_WIDTH 25
-# define SQRS_PER_SEC 2.0
+# define SQRS_PER_SEC 5.0
 # define SCREENWIDTH 1200
 # define SCREENHEIGHT 800
 # define TEXWIDTH 256
@@ -33,7 +33,6 @@
 
 typedef struct s_map
 {
-/*mapdata*/
 	char			*map_line;
 	char			**map;
 	char			**map_copy;
@@ -41,40 +40,34 @@ typedef struct s_map
 	int				height_map;
 	int				longest_line;
 
-/*playerdata*/
 	int				player;
-	double			ppos[2];// posX und posY in guide
+	double			ppos[2];
 	double			pdir[2];
 
-/*screen*/
 	double			planex;
 	double			planey;
 
-/*time*/
 	double			time;
 	double			oldtime;
 	double			frametime;
 
-/*start DDA*///maby init all of them to 0
 	double			camerax;
 	double			raydirx;
 	double			raydiry;
 	int				mapx;
 	int				mapy;
 
-//length of ray from current position to next x or y-side
 	double			sidedistx;
 	double			sidedisty;
 
 	double			deltadistx;
 	double			deltadisty;
 
-//what direction to step in x or y-direction (either +1 or -1)
 	int				stepx;
 	int				stepy;
 
-	int				hit; //was there a wall hit?
-	int				side; //was a NS or a EW wall hit?
+	int				hit;
+	int				side;
 	int				wall_direction;
 
 	double			perpwalldist;
@@ -83,12 +76,10 @@ typedef struct s_map
 	int				drawstart;
 	int				drawend;
 
-	/*window*/
 	mlx_image_t		*image;
 	mlx_texture_t	*tex[4];
 	mlx_t			*mlx;
 
-	/*keys*/
 	bool			key_w_pressed;
 	bool			key_s_pressed;
 	bool			key_d_pressed;
@@ -131,11 +122,12 @@ void				logg_s_util(t_map *env);
 int					longest_line(char **map);
 void				check_for_chars(char **place, t_map *env, int i, int j);
 void				get_map_line(t_map *env, char **av);
+void				file_type(t_map *env, char *map_name);
 
 /*error handling*/
 void				err_msg(t_map *env, int flag);
 void				ft_err(t_map *env);
-void				enclosed(t_map *env, int x, int y);
+void				enclosed(t_map *env);
 void				allowed_characters(t_map *env);
 void				logg_dir(t_map *env, char place);
 void				init_game(t_map *env);
@@ -193,6 +185,8 @@ void				get_and_calc_color2(t_color var, t_map *args, uint32_t res);
 void				error_path(char *path, t_map *args);
 void				assign_path(char *path, t_map *args, \
 t_direction direction);
+void				is_enclosed(t_map *env);
+void				enclosed_error(t_map *env, char **map);
 
 /*free*/
 void				free_all(t_map *env);

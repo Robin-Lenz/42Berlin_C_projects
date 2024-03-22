@@ -6,7 +6,7 @@
 /*   By: rpodack <rpodack@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 19:06:41 by rpodack           #+#    #+#             */
-/*   Updated: 2024/02/26 14:33:38 by rpodack          ###   ########.fr       */
+/*   Updated: 2024/03/14 18:37:09 by rpodack          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	draw_floor_ceiling(t_map *env, int x)
 		y++;
 	}
 	y = env->drawend;
-	while (y < SCREENHEIGHT)
+	while (y < SCREENHEIGHT - 1)
 	{
 		put_pixel(env->image, x, y, env->floor_color);
 		y++;
