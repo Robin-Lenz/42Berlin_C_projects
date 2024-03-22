@@ -1,34 +1,39 @@
 # 42Berlin_C_projects
 
-This repository contains all my projects from the core curriculum of 42 Berlin, implemented using the C programming language. These projects cover various topics and concepts in computer science and software engineering.
-Projects:
+This repository contains all my projects from the piscine and the core curriculum of 42 Berlin, implemented using the C programming language. These projects cover various topics and concepts in computer science and software engineering.
 
+<span style="font-size: 16px;">**Projects**</span>
 
-libft:
+*piscine*:
+	The 'Piscine' is a one-month assessment center of 42.
+	
+<span style="font-size: 16px;">**core curriculum**</span>
+
+*libft*:
 	In this first project of the core curriculum I implemented a library of essential functions in C. This project's primary objective is to foster a more profound understanding of these general prupose functions
 	
-ft_printf:
-	This is my implementation of printf with including the following conversions: cspdiuxX%.
+*ft_printf*:
+	This is my implementation of printf including the following conversions: cspdiuxX%.
 
-get_next_line:
+*get_next_line*:
 	This project is about programming a function that returns a line read from a file descriptor.
 
-minitalk:
+*minitalk*:
 	The purpose of this project is to code a small data exchange program using UNIX signals.
 
-so_long:
+*so_long*:
 	This project is a very small 2D game. Its purpose is to get familiar with working with textures, sprites, and some other very basic gameplay elements.
 
-push_swap:
+*push_swap*:
 	This project involves sorting data using a stack and a limited set of instructions while minimizing the number of actions required. Success requires proficiency in manipulating diverse algorithms and selecting the most suitable solution from a range of options for optimized data sorting.
 	
-philosophers:
+*philosophers*:
 	Eat, sleep, spaghetti, repeat! This project solves the dining philosopher problem using threads.
 
-minishell:
-	This project focuses on developing a basic shell, much alike a personalized version of bash. I learned a lot about processes and fle descriptors.
+*minishell*:
+	This project focuses on developing a basic shell, much alike a personalized version of bash. It made me learn a lot about processes and fle descriptors.
 
-cub3D:
+*cub3D*:
 	This project draws inspiration from the renowned Wolfenstein 3D game, acknowledged as the pioneer of first-person shooters (FPS). It offers an opportunity to delve into ray-casting techniques. Its objective involved creating a dynamic view within a maze environment.
 
 
